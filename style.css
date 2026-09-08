@@ -1,0 +1,882 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f7f3ed;
+    color: #403a34;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* ========================= */
+/* ПЕРВЫЙ ЭКРАН */
+/* ========================= */
+
+.hero {
+    height: 100vh;
+    min-height: 650px;
+
+    position: relative;
+
+    background-image: url("images/wedding.jpg");
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.30);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    padding: 20px;
+
+    animation: heroAppear 2s ease;
+}
+
+.hero-subtitle {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(50px, 10vw, 105px);
+    font-weight: normal;
+
+    letter-spacing: 2px;
+}
+
+.hero h1 span {
+    font-style: italic;
+
+    margin: 0 8px;
+}
+
+.hero-date {
+    margin-top: 30px;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+
+    letter-spacing: 7px;
+}
+
+.scroll-down {
+    margin-top: 100px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+
+    opacity: 0.9;
+}
+
+.scroll-down span {
+    display: block;
+
+    font-size: 20px;
+
+    margin-top: 10px;
+
+    animation: arrowMove 1.5s infinite alternate;
+}
+
+
+/* ========================= */
+/* ОБЩИЕ СЕКЦИИ */
+/* ========================= */
+
+.section {
+    min-height: 75vh;
+
+    padding: 100px 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.section-label {
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #958779;
+
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    font-size: clamp(34px, 7vw, 65px);
+
+    font-weight: normal;
+
+    line-height: 1.2;
+
+    margin-bottom: 35px;
+}
+
+.main-text {
+    max-width: 650px;
+
+    font-size: 19px;
+
+    line-height: 2;
+
+    color: #6b6259;
+}
+
+.ornament {
+    margin-top: 40px;
+
+    font-size: 20px;
+
+    color: #a9947f;
+}
+
+
+
+
+
+/* ========================= */
+/* ТАЙМЕР */
+/* ========================= */
+
+.countdown-section {
+    position: relative;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #111;
+    color: white;
+}
+
+
+/* ВИДЕО НА ФОНЕ */
+
+.countdown-video {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    z-index: 1;
+}
+
+
+/* ЗАТЕМНЕНИЕ */
+
+.countdown-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.42);
+
+    z-index: 2;
+}
+
+
+/* ТАЙМЕР */
+
+.countdown-content {
+    position: relative;
+    z-index: 5;
+
+    width: min(900px, 90%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: clamp(25px, 6vw, 80px);
+
+    text-align: center;
+}
+
+
+/* ОДНА ЦИФРА + ПОДПИСЬ */
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-width: 100px;
+}
+
+
+/* БОЛЬШИЕ ЦИФРЫ */
+
+.countdown-item span {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(48px, 7vw, 82px);
+    font-weight: 400;
+
+    line-height: 1;
+
+    color: #fff;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 2px 15px rgba(0, 0, 0, 0.45);
+}
+
+
+/* ПОДПИСИ */
+
+.countdown-item small {
+    margin-top: 18px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: clamp(12px, 1.5vw, 17px);
+    font-weight: 300;
+
+    letter-spacing: 1.5px;
+
+    color: #fff;
+}
+
+
+/* РВАНЫЙ КРАЙ */
+
+.torn-edge {
+    position: absolute;
+
+    left: 0;
+    width: 100%;
+
+    height: 85px;
+
+    z-index: 6;
+
+    background: #fff;
+}
+
+
+/* ВЕРХ */
+
+.torn-top {
+    top: -1px;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 55%,
+        96% 50%,
+        93% 65%,
+        89% 48%,
+        85% 60%,
+        81% 42%,
+        77% 57%,
+        72% 43%,
+        68% 62%,
+        63% 45%,
+        58% 58%,
+        53% 40%,
+        48% 55%,
+        43% 43%,
+        38% 61%,
+        33% 45%,
+        28% 58%,
+        23% 42%,
+        18% 62%,
+        13% 47%,
+        8% 60%,
+        4% 48%,
+        0 58%
+    );
+}
+
+
+/* НИЗ */
+
+.torn-bottom {
+    bottom: -1px;
+
+    clip-path: polygon(
+        0 42%,
+        4% 52%,
+        8% 38%,
+        13% 55%,
+        18% 40%,
+        23% 58%,
+        28% 43%,
+        33% 60%,
+        38% 45%,
+        43% 57%,
+        48% 40%,
+        53% 55%,
+        58% 43%,
+        63% 60%,
+        68% 44%,
+        72% 57%,
+        77% 40%,
+        81% 58%,
+        85% 43%,
+        89% 60%,
+        93% 42%,
+        96% 55%,
+        100% 43%,
+        100% 100%,
+        0 100%
+    );
+}
+
+.calendar-section {
+    background: #e9e0d4;
+}
+
+.calendar {
+    width: min(420px, 100%);
+
+    margin-top: 10px;
+}
+
+.calendar-header {
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 25px;
+}
+
+.weekdays,
+.days {
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 8px;
+}
+
+.weekdays {
+    margin-bottom: 12px;
+}
+
+.weekdays span {
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    color: #918477;
+}
+
+.days span {
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+}
+
+.selected-day {
+    width: 40px;
+    height: 40px !important;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: #75685d;
+
+    color: white;
+}
+
+.time-info {
+    margin-top: 45px;
+
+    display: flex;
+
+    gap: 60px;
+}
+
+.time-info p {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.time-info span {
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #8d8174;
+}
+
+.time-info strong {
+    font-size: 25px;
+
+    font-weight: normal;
+}
+
+
+/* ========================= */
+/* МЕКЕН-ЖАЙ */
+/* ========================= */
+
+.address-section {
+    background: #f4efe8;
+}
+
+.address {
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #6b6259;
+}
+
+.map-container {
+    width: min(850px, 100%);
+
+    height: 350px;
+
+    margin-top: 45px;
+
+    overflow: hidden;
+}
+
+.map-placeholder {
+    height: 100%;
+
+    background: #ddd5cb;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #766b61;
+}
+
+.map-placeholder span {
+    font-size: 40px;
+}
+
+.map-placeholder p {
+    margin-top: 10px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+.map-button {
+    margin-top: 30px;
+
+    padding: 15px 30px;
+
+    border: 1px solid #75685d;
+
+    color: #403a34;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    transition: 0.3s;
+}
+
+.map-button:hover {
+    background: #75685d;
+
+    color: white;
+}
+
+
+/* ========================= */
+/* ТОЙ ИЕСІ */
+/* ========================= */
+
+.host-section {
+    min-height: 55vh;
+
+    background: #ded3c6;
+}
+
+
+/* ========================= */
+/* RSVP */
+/* ========================= */
+
+.rsvp-section {
+    background: #f7f3ed;
+}
+
+#rsvpForm {
+    width: min(500px, 100%);
+
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label:first-child {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-bottom: 1px solid #aaa;
+
+    background: transparent;
+
+    outline: none;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    color: #403a34;
+}
+
+.radio-option {
+    display: block;
+
+    padding: 12px 0;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.radio-option input {
+    margin-right: 10px;
+}
+
+.guests-group {
+    display: block;
+}
+
+.submit-button {
+    width: 100%;
+
+    padding: 17px;
+
+    border: 1px solid #75685d;
+
+    background: #75685d;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    transition: 0.3s;
+}
+
+.submit-button:hover {
+    background: transparent;
+
+    color: #75685d;
+}
+
+.success-message {
+    display: none;
+
+    margin-top: 30px;
+
+    text-align: center;
+}
+
+.success-message h3 {
+    font-size: 30px;
+
+    font-weight: normal;
+
+    margin-bottom: 10px;
+}
+
+.success-message p {
+    color: #766b61;
+}
+
+
+/* ========================= */
+/* ФИНАЛ */
+/* ========================= */
+
+.final-section {
+    height: 100vh;
+    min-height: 650px;
+
+    position: relative;
+
+    background-image: url("images/wedding.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: white;
+
+    text-align: center;
+}
+
+.final-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.final-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+.final-content p {
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 25px;
+}
+
+.final-content h2 {
+    font-size: clamp(45px, 8vw, 80px);
+
+    font-weight: normal;
+
+    margin-bottom: 25px;
+}
+
+.final-content span {
+    font-family: Arial, sans-serif;
+
+    letter-spacing: 6px;
+
+    font-size: 13px;
+}
+
+
+/* ========================= */
+/* МУЗЫКА */
+/* ========================= */
+
+.music-button {
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    z-index: 100;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    border: 1px solid white;
+
+    background: rgba(70, 60, 50, 0.7);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+
+/* ========================= */
+/* АНИМАЦИЯ ПОЯВЛЕНИЯ */
+/* ========================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(60px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* ========================= */
+/* АНИМАЦИИ */
+/* ========================= */
+
+@keyframes heroAppear {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes arrowMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(10px);
+    }
+
+}
+
+
+/* ========================= */
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+/* ========================= */
+
+@media (max-width: 600px) {
+
+    .section {
+        padding: 80px 20px;
+    }
+
+    .countdown {
+        gap: 15px;
+    }
+
+    .time-info {
+        gap: 35px;
+    }
+
+    .map-container {
+        height: 280px;
+    }
+
+    .main-text {
+        font-size: 17px;
+    }
+
+    .countdown-section {
+        min-height: 100svh;
+    }
+    
+    .countdown-content {
+        width: 94%;
+        gap: 12px;
+    }
+    
+    .countdown-item {
+        min-width: 70px;
+    }
+    
+    .countdown-item span {
+        font-size: clamp(38px, 11vw, 60px);
+        letter-spacing: 0;
+    }
+    
+    .countdown-item small {
+        margin-top: 12px;
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+    
+    .torn-edge {
+        height: 65px;
+    }
+
+}
